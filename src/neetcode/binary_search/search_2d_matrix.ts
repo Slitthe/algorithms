@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/search-a-2d-matrix/
+
 function binarySearch(arr: number[], target: number): boolean {
     let left = 0;
     let right = arr.length - 1;

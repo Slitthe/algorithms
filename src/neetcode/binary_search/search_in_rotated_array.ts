@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+
 export default function search(nums: number[], target: number): number {
     let left = 0;
     let right = nums.length - 1;
@@ -12,7 +14,7 @@ export default function search(nums: number[], target: number): number {
         if (left === right) {
             break;
         }
-        
+
         if (nums[left] <= middleValue) {
             // left part is in ascending order
             if (target >= nums[left] && target < middleValue) {

@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/koko-eating-bananas/
+
 export function minEatingSpeed(piles: number[], timeInHours: number): number {
     let left = 1;
     let right = Math.max(...piles);

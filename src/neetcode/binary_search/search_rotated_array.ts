@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+
 export function searchRotatedArray(arr: number[], left: number = 0, right: number = arr.length - 1): number {
     if (left === right) {
         return arr[left];
