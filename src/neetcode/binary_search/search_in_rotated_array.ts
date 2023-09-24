@@ -12,9 +12,7 @@ export default function search(nums: number[], target: number): number {
         if (left === right) {
             break;
         }
-
-        console.log({nums, middle, middleValue, target, left, right})
-
+        
         if (nums[left] <= middleValue) {
             // left part is in ascending order
             if (target >= nums[left] && target < middleValue) {
