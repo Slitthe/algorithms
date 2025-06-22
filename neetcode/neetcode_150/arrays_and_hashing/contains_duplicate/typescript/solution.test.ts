@@ -1,10 +1,10 @@
 
 import { containsDuplicate } from "./solution";
 
-test('adds 1 + 2 to equal 3', () => {
+test('[1, 2, 3, 3] should return true', () => {
   expect(containsDuplicate([1, 2, 3, 3])).toBe(true);
 });
 
-test('adds 1 + 2 to equal 3', () => {
+test('[1, 2, 3, 4] should retun false', () => {
   expect(containsDuplicate([1, 2, 3, 4])).toBe(false);
 });
