@@ -9,7 +9,6 @@ test('"jar". ""jam" should return false ', () => {
     expect(isValidAnagram("jar", "jam")).toBe(false);
 });
 
-
 test('"test". ""test2" should return false ', () => {
     expect(isValidAnagram("jar", "jam")).toBe(false);
 });
