@@ -1,4 +1,4 @@
-// You should aim for a solution with O(n + m) time and O(1) space, where n is the length of the string s and m is the length of the string t.
+
 export function isValidAnagram(s: string, t: string): boolean {
     if (s.length !== t.length) {
         return false;
