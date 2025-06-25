@@ -1,0 +1,7 @@
+1. Download and install Docker Desktop for your operating system
+2. Run the following command in this directory:
+    docker build -t top-k-frequent-ts . && docker run --rm top-k-frequent-ts && docker rmi
+top-k-frequent-ts
+
+This command will build a container in which to run the file, then immediately execute it, 
+and afterwards it also deletes so that it won't occupy your disk space
