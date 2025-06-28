@@ -2,27 +2,26 @@ export function longestConsecutive(nums: number[]): number {
     if (nums.length < 2) {
         return nums.length;
     }
+    const numsSet = new Set(nums);
 
-    nums.sort((a, b) => a - b);
+    let longestConsecutive = 1;
 
-    let longest = 1;
-    let currentLength = 1;
-    for (let i = 1; i < nums.length; i++) {
-        const prevNum = nums[i - 1];
-        const currentNum = nums[i];
-
-        if (prevNum === currentNum) {
+    for (const num of nums) {
+        const isStartOfSequence = !numsSet.has(num - 1);
+        if (!isStartOfSequence) {
             continue;
         }
 
-        if (currentNum === prevNum + 1) {
-            currentLength++;
-            longest = Math.max(longest, currentLength);
-        } else {
-            longest = Math.max(longest, currentLength);
-            currentLength = 1;
+        let currentConsecutive = 1;
+
+        let currentValue = num;
+        while (numsSet.has(currentValue + 1)) {
+            currentValue++;
+            currentConsecutive += 1;
         }
+
+        longestConsecutive = Math.max(currentConsecutive, longestConsecutive);
     }
 
-    return longest;
+    return longestConsecutive;
 }
