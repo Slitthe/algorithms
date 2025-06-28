@@ -8,7 +8,6 @@ export function isValidSudoku(sudoku: string[][]): boolean {
             }
 
             if (colSet.has(currentValue)) {
-                console.log("row invalid");
                 return false;
             }
 
