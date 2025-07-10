@@ -1,43 +1,34 @@
 export function trap(heights: number[]): number {
-    let leftPointer = 0;
-    let rightPointer = 0;
+    const leftHeights: number[] = Array.from({ length: heights.length }).fill(0) as number[];
+    const rightHeights: number[] = Array.from({ length: heights.length }).fill(0) as number[];
 
-    while (leftPointer < heights.length && heights[leftPointer] === 0) {
-        leftPointer++;
+    for (let i = 1; i < heights.length; i++) {
+        const previousMaxHeight = leftHeights[i - 1];
+        const leftValue = heights[i - 1];
+
+        leftHeights[i] = Math.max(previousMaxHeight, leftValue);
     }
 
-    let volume = 0;
-    rightPointer = leftPointer + 1;
+    for (let i = heights.length - 2; i >= 0; i--) {
+        const previousMaxHeight = rightHeights[i + 1];
+        const rightValue = heights[i + 1];
 
-    while (rightPointer < heights.length && leftPointer < heights.length) {
-        let currentVolume = 0;
-        while (rightPointer < heights.length && heights[rightPointer] < heights[leftPointer]) {
-            currentVolume += heights[leftPointer] - heights[rightPointer];
-            rightPointer++;
-        }
-
-        if (rightPointer === heights.length && leftPointer < heights.length - 3) {
-            leftPointer++;
-            rightPointer = leftPointer + 1;
-            continue;
-        }
-
-        if (rightPointer >= heights.length || leftPointer >= heights.length) {
-            console.log({ rightPointer, leftPointer });
-            break;
-        }
-
-        if (heights[leftPointer] > heights[rightPointer]) {
-            currentVolume -= Math.abs(heights[leftPointer] - heights[rightPointer]) * (rightPointer - 1 - leftPointer);
-        }
-
-        volume += currentVolume;
-
-        // console.log({ leftPointer, rightPointer, volume });
-
-        leftPointer = rightPointer;
-        rightPointer++;
+        rightHeights[i] = Math.max(rightValue, previousMaxHeight);
     }
 
-    return volume;
+    let trappedTotalWater = 0;
+    for (let i = 0; i < heights.length; i++) {
+        const currentNum = heights[i];
+
+        const leftMax = leftHeights[i];
+        const rightMax = rightHeights[i];
+
+        const possibleTrappedHeight = Math.min(leftMax, rightMax) - currentNum;
+
+        if (possibleTrappedHeight > 0) {
+            trappedTotalWater += possibleTrappedHeight;
+        }
+    }
+
+    return trappedTotalWater;
 }
